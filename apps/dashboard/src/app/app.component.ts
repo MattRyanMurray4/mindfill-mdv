@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@mindfill/api-interfaces';
 
 @Component({
   selector: 'mindfill-root',
@@ -8,6 +6,11 @@ import { Message } from '@mindfill/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  title = 'MindFill';
+  links = [
+    { path: '/', icon: 'home', title: 'Home' },
+    { path: 'ideas', icon: 'view_list', title: 'Ideas' },
+    { path: 'referrals', icon: 'view_list', title: 'Referrals' },
+    { path: 'adventures', icon: 'view_list', title: 'Adventures' },
+  ];
 }

@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentIdea.id; else createNew">
+      <h1>Update {{ originalTitle }}</h1>
+    </mat-card-title>
+    <ng-template #createNew><h1>Submit New Idea</h1></ng-template>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="ideaName"
+          type="text"
+          name="ideaName"
+        />
+        <mat-error *ngIf="form.get('ideaName')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Date</mat-label>
+        <input
+          matInput
+          placeholder="Date"
+          formControlName="date"
+          type="date"
+          name="date"
+        />
+        <mat-error *ngIf="form.get('date')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          placeholder="Description"
+          formControlName="description"
+          type="text"
+          name="description"
+        />
+        <mat-error *ngIf="form.get('description')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-checkbox matLine placeHolder="Personal" formControlName="personal"
+        >Personal</mat-checkbox
+      >
+
+      <mat-checkbox matLine placeHolder="Business" formControlName="business"
+        >Business</mat-checkbox
+      >
+
+      <mat-checkbox matLine placeHolder="Romance" formControlName="romance"
+        >Romance</mat-checkbox
+      >
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        {{ currentIdea.id ? 'Submit' : 'Update' }}
+      </button>
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

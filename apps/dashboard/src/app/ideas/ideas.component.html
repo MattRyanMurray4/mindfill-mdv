@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-ideas-list
+      [ideas]="ideas$ | async"
+      (selected)="selectIdea($event)"
+      (deleted)="deleteIdea($event)"
+    ></mindfill-ideas-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-idea-details
+      [form]="form"
+      [idea]="selectedIdea$ | async"
+      (cancelled)="cancel()"
+      (saved)="saveIdea($event)"
+    ></mindfill-idea-details>
+  </div>
+</div>

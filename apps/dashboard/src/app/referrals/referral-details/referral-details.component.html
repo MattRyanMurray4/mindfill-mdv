@@ -1,0 +1,76 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentReferral.id; else createNew">
+      <h1>Update {{ originalName }}</h1>
+    </mat-card-title>
+    <ng-template #createNew>
+      <h1>Submit New Referral</h1>
+    </ng-template>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Facility</mat-label>
+        <input
+          matInput
+          placeholder="Facility"
+          formControlName="facility"
+          type="text"
+          name="facility"
+        />
+        <mat-error *ngIf="form.get('facility')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          placeholder="Phone Number"
+          formControlName="phoneNumber"
+          type="text"
+          name="phoneNumber"
+        />
+        <mat-error *ngIf="form.get('phoneNumber')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Room Number</mat-label>
+        <input
+          matInput
+          placeholder="Room Number"
+          formControlName="roomNumber"
+          type="text"
+          name="roomNumber"
+        />
+        <mat-error *ngIf="form.get('roomNumber')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-checkbox placeholder="Processed" formControlName="processed"
+        >Processed</mat-checkbox
+      >
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        {{ currentReferral.id ? 'Update' : 'Submit' }}
+      </button>
+      <button mat-button type="button" (cancel)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

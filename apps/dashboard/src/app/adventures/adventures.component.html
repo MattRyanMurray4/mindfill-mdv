@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-adventures-list
+      [adventures]="adventures$ | async"
+      (selected)="selectAdventure($event)"
+      (deleted)="deleteAdventure($event)"
+    ></mindfill-adventures-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-adventure-details
+      [form]="form"
+      [adventure]="selectedAdventure$ | async"
+      (saved)="saveAdventure($event)"
+      (cancelled)="cancel()"
+    ></mindfill-adventure-details>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> <h1>Select an Referral</h1> </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let referral of referrals"
+        (click)="selected.emit(referral)"
+        class="mat-list-item"
+      >
+        <h1 matLine>{{ referral.name }}</h1>
+        <p matLine>{{ referral.facility }}</p>
+        <p matLine>{{ referral.roomNumber }}</p>
+        <button
+          mat-icon-button
+          (click)="deleted.emit(referral); $event.stopImmediatePropagation()"
+        >
+          <mat-icon *ngIf="!readonly">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

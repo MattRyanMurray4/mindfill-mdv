@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/ui-library",
+  "sourceRoot": "libs/ui-library/src",
+  "prefix": "mindfill",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/ui-library"
+      ],
+      "options": {
+        "jestConfig": "libs/ui-library/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui-library/src/**/*.ts",
+          "libs/ui-library/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

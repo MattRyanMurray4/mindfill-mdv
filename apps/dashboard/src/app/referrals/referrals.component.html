@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-referrals-list
+      [referrals]="referrals$ | async"
+      (selected)="selectReferral($event)"
+      (deleted)="deleteReferral($event)"
+    ></mindfill-referrals-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <mindfill-referral-details
+      [form]="form"
+      [referral]="selectedReferral$ | async"
+      (saved)="saveReferral($event)"
+      (cancelled)="cancel()"
+    ></mindfill-referral-details>
+  </div>
+</div>
